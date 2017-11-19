@@ -43,12 +43,4 @@ class CartController extends Controller
         }
         return redirect()->back();
 	}
-
-    /**
-     * Proceed To Checkout
-     * @return echo
-     */
-	public function proceedToCheckout(){
-		echo "da thanh toan";
-	}
 }
