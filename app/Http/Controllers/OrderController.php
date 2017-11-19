@@ -8,6 +8,7 @@ use App\Model\Orderline;
 use App\Model\Product;
 use App\Model\Order;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\Interfaces\OrderRepositoryInterface;
 use Session;
 
 class OrderController extends Controller
@@ -17,7 +18,7 @@ class OrderController extends Controller
 	 * [__construct description]
 	 * @param ProductRepositoryInterface $product [description]
 	 */
-	// public function __construct(RepositoryInterface $order) {
+	// public function __construct(OrderRepositoryInterface $order) {
 	// 	$this->order = $order;
 	// }
 
@@ -31,7 +32,7 @@ class OrderController extends Controller
      * @return echo
      */
 	public function store(Request $request){
-		dd($this->order);
+		//dd($this->order);
 		// $order = Session('cart')? Session::get('cart'):null;
 		// $total_price = (Session::get('cart'))->totalPrice;
 		// $product_cart = $order->items;
@@ -42,7 +43,7 @@ class OrderController extends Controller
 		// foreach($product_cart as $item){
 			
 		// }
-		//return view('customers.proceedtocheckout', compact('request'));
+		return view('customers.proceedtocheckout', compact('request'));
 	}
 
 }
