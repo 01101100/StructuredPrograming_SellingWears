@@ -20,3 +20,8 @@ html, body {
         text-decoration: none;
         text-transform: uppercase;
     }
+.footer{
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+}

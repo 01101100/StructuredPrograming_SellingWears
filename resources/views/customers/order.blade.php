@@ -29,11 +29,8 @@
 				<div class="col-md-1 text-center">{{$item['price']}} $</div>
 				<div class="col-md-1 text-center">{{$item['qty']}}</div>
 				<div class="col-md-1 text-center"><a href="{{ route('product-deletefromcart', $item['product']->prod_id)}}"><button class="btn btn-default" type="button">delete</button></a></div>
-				<!-- <form action="{{ route('product-deletefromcart', $item['product']->prod_id)}}" method="POST">
-					<input title="Add to Shopping Cart" type="submit" value="Add to Cart">
-				</form> -->
 			</div>
-        @endforeach
+        	@endforeach
 		</div>
         <div class="row">
 		  	<div class="col-md-1 col-md-offset-7">Total:</div>
@@ -41,7 +38,20 @@
 		  	<div class="col-md-1 text-center">{{$total_qty}} item(s)</div>
 		  	<br><br>
 		</div>
-		<a class="a-add-to-cart" href="{{ route('proceedtocheckout')}}"><button class="add-to-cart btn btn-default" type="button">Proceed To Checkout</button></a>
+
+		<form action="{{ route('proceedtocheckout') }}" method="post">
+			{{ csrf_field() }}
+			<div>
+				<select name="dropdown">
+					<option value="Card" selected>Card</option>
+					<option value="Bankking">Chuyen Khoan Ngan Hang</option>
+					<option value="Shipping">Shipping</option>
+				</select>
+				<button class="add-to-cart btn btn-default">Proceed To Checkout</button>
+			</div>
+		</form>
+
+		
 	</div>
 	@else
         <div class="container">

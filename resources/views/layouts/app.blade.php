@@ -101,7 +101,7 @@
         </nav>
 
         @yield('content')
-        <div class="content">
+        <div class="content footer">
             <div class="links">
                 <a href="/product">Products</a>
                 <a href="/search">Search</a>

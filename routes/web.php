@@ -34,4 +34,4 @@ Route::get('addtocart/{prod_id}', 'CartController@addToCart')->name('product-add
 
 Route::get('deletefromcart/{prod_id}', 'CartController@deleteFromCart')->name('product-deletefromcart');
 
-Route::get('proceedtocheckout', 'CartController@proceedToCheckout')->name('proceedtocheckout');
+Route::post('proceedtocheckout', 'OrderController@store')->name('proceedtocheckout');
