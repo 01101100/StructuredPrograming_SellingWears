@@ -61,7 +61,7 @@ class ProductController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit(Product $product) {
-		//
+		return view('products.edit', ['product' => $product]);
 	}
 
 	/**
@@ -71,8 +71,12 @@ class ProductController extends Controller {
 	 * @param  \App\Model\Product  $product
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, Product $product) {
-		//
+	public function update(Request $request, $id) {
+		// dd($request->all());
+		$prod = Product::find($id);
+		if ($prod) {
+			$prod->update($request->all());
+		}
 	}
 
 	/**
