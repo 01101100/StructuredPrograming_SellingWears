@@ -36,6 +36,7 @@ class ProductController extends Controller {
 	 */
 	public function create() {
 		//
+		if ()
 		$categories = $this->category->getAll();
 		return view('products.create', ['categories' => $categories]);
 	}

@@ -15,7 +15,7 @@ class AddRollToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->integer('roll');
+            $table->integer('role');
         });
     }
 
@@ -28,7 +28,7 @@ class AddRollToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->dropColumn('roll');
+            $table->dropColumn('role');
         });
     }
 }
