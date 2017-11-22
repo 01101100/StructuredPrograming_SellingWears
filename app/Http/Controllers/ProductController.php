@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Model\Product;
 // use App\Model\Category;
 use App\Repositories\Interfaces\ProductRepositoryInterface;
@@ -36,9 +37,13 @@ class ProductController extends Controller {
 	 */
 	public function create() {
 		//
-		if ()
-		$categories = $this->category->getAll();
-		return view('products.create', ['categories' => $categories]);
+		if (Auth::check() && Auth::user()->role == 2) {  // admin's role = 2
+			$categories = $this->category->getAll();
+			return view('products.create', ['categories' => $categories]);
+		} else {
+			return redirect('permission');
+		}
+		
 	}
 
 	/**
@@ -50,14 +55,18 @@ class ProductController extends Controller {
 	public function store(Request $request) {
 		//
 		// dd($request);
-		$title = $request->input('inputTitle');
-		$actor = $request->input('inputActor');
-		$price = $request->input('inputPrice');
+		if (Auth::check() && Auth::user()->role == 2) {
+			$title = $request->input('inputTitle');
+			$actor = $request->input('inputActor');
+			$price = $request->input('inputPrice');
 
-		$product = ['category' => 1, 'title' => $title, 'actor' => $actor, 'price' => $price];
+			$product = ['category' => 1, 'title' => $title, 'actor' => $actor, 'price' => $price];
 
-		$result = $this->product->create($product);
-		return redirect('product/'.$result->prod_id);
+			$result = $this->product->create($product);
+			return redirect('product/'.$result->prod_id);
+		} else {
+			return redirect('permission');
+		}
 	}
 
 	/**

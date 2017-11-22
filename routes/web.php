@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('permission', function() {
+	return view('auth.permission');
+})->name('permission');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
