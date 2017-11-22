@@ -48,4 +48,5 @@ class ProductRepository extends EloquentRepository implements ProductRepositoryI
 	// 					 'price' => $product['inputPrice'] 
 	// 					]);
 	// }
+	
 }

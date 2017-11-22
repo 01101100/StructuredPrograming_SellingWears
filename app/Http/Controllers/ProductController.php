@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Model\Product;
-use App\Model\Category;
+// use App\Model\Category;
 use App\Repositories\Interfaces\ProductRepositoryInterface;
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller {
@@ -12,8 +13,10 @@ class ProductController extends Controller {
 	 * [__construct description]
 	 * @param ProductRepositoryInterface $product [description]
 	 */
-	public function __construct(ProductRepositoryInterface $product) {
+	public function __construct(ProductRepositoryInterface $product, 
+								CategoryRepositoryInterface $category) {
 		$this->product = $product;
+		$this->category = $category;
 	}
 
 	/**
@@ -33,7 +36,7 @@ class ProductController extends Controller {
 	 */
 	public function create() {
 		//
-		$categories = Category::all();
+		$categories = $this->category->getAll();
 		return view('products.create', ['categories' => $categories]);
 	}
 
